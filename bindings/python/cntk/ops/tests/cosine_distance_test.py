@@ -27,3 +27,22 @@ def test_cosine_distance():
   val = cos_seq.eval({src:[a], tgt:[b]})
   expected = [[ 1.,        0.914659,  0.878459,  0.86155,   0.851852]] 
   print(np.allclose(val, expected))
+
+def test_cosine_distance_with_negative_samples():
+  a = np.array([[1., 0., 1., 0., 0.],
+                [0., 1., 0., 1., 1.],
+                [1., 1., 0., 0., 0.],
+                [0., 0., 1., 1., 1.]], dtype=np.float32)
+  b = np.array([[1., 0., 1., 0., 0.],
+                [0., 1., 0., 1., 1.],
+                [1., 1., 0., 0., 0.],
+                [0., 0., 1., 1., 1.]], dtype=np.float32)
+
+  c = np.array([1., 0., 1., 0., 0.], dtype=np.float32)
+  d = np.array([1., 0., 1., 0., 0.], dtype=np.float32)
+
+  qry = input_variable(shape=(5))
+  doc = input_variable(shape=(5))
+  model = cosine_distance_with_negative_samples(qry, doc, shift=1, num_negative_samples=1)
+  val = model.eval({qry:[c], doc:[d]})
+  print(val)

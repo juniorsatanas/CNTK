@@ -3298,6 +3298,23 @@ namespace CNTK
     CNTK_API FunctionPtr CosineDistance(const Variable& leftOperand, const Variable& rightOperand, const std::wstring& name = L"");
 
     ///
+    /// Create an instance of the CNTK built-in operation to compute the cosine distance with negative samplesfor the specified input operands.
+    ///
+    CNTK_API FunctionPtr CosineDistanceWithNegativeSamples(const Variable& leftOperand, const Variable& rightOperand, const size_t shiftWindow, const size_t numberOfNegativeSamples, const std::wstring& name = L"");
+
+    ///
+    /// Create an instance of the CNTK built-in operation to compute the cosine distance with negative samplesfor the specified input operands.
+    /// This overload uses an initial state value of 0.
+    /// Throws an exception of the operand has more than one dynamic axis.
+    ///
+    //inline FunctionPtr CosineDistanceWithNegativeSamples(const Variable& leftOperand, const Variable& rightOperand, const size_t shiftWindow, const size_t numberOfNegativeSamples, const std::wstring& name = L"")
+    //{
+    //    const auto shiftWindow_scalar = Constant::Scalar(shiftWindow);
+    //    const auto numberOfNegativeSamples_scalar = Constant::Scalar(numberOfNegativeSamples);
+    //    return Internal::CosineDistanceWithNegativeSamples(leftOperand, rightOperand, shiftWindow_scalar, numberOfNegativeSamples_scalar, name);
+    //}
+
+    ///
     /// Create an instance of the CNTK built-in operation to compute binary cross-entropy for specified input operands.
     ///
     CNTK_API FunctionPtr BinaryCrossEntropy(const Variable& prediction, const Variable& targets, const std::wstring& name = L"");

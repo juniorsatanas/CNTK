@@ -124,6 +124,7 @@ public:
     ComputationNodePtr Clip(const ComputationNodePtr a, const ComputationNodePtr b, const ComputationNodePtr c, const std::wstring nodeName = L"");
     ComputationNodePtr Cos(const ComputationNodePtr a, const std::wstring nodeName = L"");
     ComputationNodePtr CosDistance(const ComputationNodePtr a, const ComputationNodePtr b, const std::wstring nodeName = L"");
+    ComputationNodePtr CosDistanceWithNegativeSamples(const ComputationNodePtr a, const ComputationNodePtr b, const ComputationNodePtr shiftWindow, const ComputationNodePtr numberOfNegativeSamples, const std::wstring nodeName = L"");
     ComputationNodePtr CrossEntropy(const ComputationNodePtr label, const ComputationNodePtr prediction, const std::wstring nodeName = L"");
     ComputationNodePtr CrossEntropyWithSoftmax(const ComputationNodePtr label, const ComputationNodePtr prediction, const std::wstring nodeName = L"");
     ComputationNodePtr ForwardBackward(const ComputationNodePtr label, const ComputationNodePtr prediction, int blankTokenId, int delayConstraint, const std::wstring nodeName = L"");

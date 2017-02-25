@@ -994,6 +994,15 @@ namespace CNTK
         return BinaryOp(PrimitiveOpType::CosDistance, leftOperand, rightOperand, Dictionary(), name);
     }
 
+    FunctionPtr CosineDistanceWithNegativeSamples(const Variable& leftOperand, const Variable& rightOperand, const size_t shiftWindow, const size_t numberOfNegativeSamples, const std::wstring& name)
+    {
+        //const auto shiftWindow_scalar = Constant::Scalar(shiftWindow);
+        //const auto numberOfNegativeSamples_scalar = Constant::Scalar(numberOfNegativeSamples);
+
+        std::vector<Variable> operands = {leftOperand, rightOperand, Constant::Scalar((float) shiftWindow),  Constant::Scalar((float) numberOfNegativeSamples) };
+        return AsComposite(MakeSharedObject<PrimitiveFunction>(PrimitiveOpType::CosDistanceWithNegativeSamples, operands, Dictionary(), name), name);
+    }
+
     FunctionPtr BinaryCrossEntropy(const Variable& prediction, const Variable& targets, const std::wstring& name)
     {
         std::vector<Variable> operands = { prediction, targets };

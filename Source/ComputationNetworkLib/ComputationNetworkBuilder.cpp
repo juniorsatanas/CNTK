@@ -740,6 +740,12 @@ shared_ptr<ComputationNode<ElemType>> ComputationNetworkBuilder<ElemType>::CosDi
 }
 
 template <class ElemType>
+shared_ptr<ComputationNode<ElemType>> ComputationNetworkBuilder<ElemType>::CosDistanceWithNegativeSamples(const ComputationNodePtr a, const ComputationNodePtr b, const ComputationNodePtr shiftWindow, const ComputationNodePtr numberOfNegativeSamples, const std::wstring nodeName)
+{
+    return net.AddNodeToNetAndAttachInputs(New<CosDistanceWithNegativeSamplesNode<ElemType>>(net.GetDeviceId(), nodeName), { a, b, shiftWindow, numberOfNegativeSamples });
+}
+
+template <class ElemType>
 shared_ptr<ComputationNode<ElemType>> ComputationNetworkBuilder<ElemType>::KhatriRaoProduct(const ComputationNodePtr a, const ComputationNodePtr b, const std::wstring nodeName)
 {
     return net.AddNodeToNetAndAttachInputs(New<KhatriRaoProductNode<ElemType>>(net.GetDeviceId(), nodeName), { a, b });

@@ -693,6 +693,14 @@ namespace CNTK
                             outputShape = operand.Shape();
                             break;
                         }
+                        case PrimitiveOpType::CosDistanceWithNegativeSamples:
+                        {
+                            // Need to output a shape equivalent to the negative number of samples
+                            //assert(m_inputs.size() == 3);
+                            //SAYANSTOPPED
+                            outputShape =  NDShape(m_inputs[3].Shape().Rank()[0] + 1;
+                            break;
+                        }
                         default:
                             LogicError("Specified m_op %S not yet supported", PrimitiveOpTypeName(m_op).c_str());
                             break;
